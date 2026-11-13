@@ -6,14 +6,14 @@
 #include <time.h>
 
 // ===================== WIFI / FIREBASE PODESAVANJA =====================
-const char* WIFI_SSID     = "TVOJ_WIFI_NAZIV";
-const char* WIFI_PASSWORD = "TVOJA_WIFI_LOZINKA";
+const char* WIFI_SSID     = "";
+const char* WIFI_PASSWORD = "";
 
-const char* FIREBASE_API_KEY = "ZAMENI_API_KEY";
+const char* FIREBASE_API_KEY = "";
 
-const char* FIREBASE_DATABASE_URL = "https://ZAMENI_PROJECT_ID-default-rtdb.europe-west1.firebasedatabase.app";
-const char* FIREBASE_DEVICE_EMAIL = "parking-device@example.com";
-const char* FIREBASE_DEVICE_PASSWORD = "OVDE_UNESI_LOZINKU";
+const char* FIREBASE_DATABASE_URL = "";
+const char* FIREBASE_DEVICE_EMAIL = "";
+const char* FIREBASE_DEVICE_PASSWORD = "";
 
 const unsigned long FIREBASE_HEARTBEAT_MS = 10000; // osveži signal uređaja na 10 s
 const unsigned long WIFI_RETRY_MS = 10000;
