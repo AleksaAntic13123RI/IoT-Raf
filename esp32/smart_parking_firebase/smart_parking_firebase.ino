@@ -10,7 +10,7 @@ const char* WIFI_SSID     = "TVOJ_WIFI_NAZIV";
 const char* WIFI_PASSWORD = "TVOJA_WIFI_LOZINKA";
 
 const char* FIREBASE_API_KEY = "ZAMENI_API_KEY";
-// Kopiraj TAČAN URL iz Realtime Database konzole. Bez završne kose crte.
+
 const char* FIREBASE_DATABASE_URL = "https://ZAMENI_PROJECT_ID-default-rtdb.europe-west1.firebasedatabase.app";
 const char* FIREBASE_DEVICE_EMAIL = "parking-device@example.com";
 const char* FIREBASE_DEVICE_PASSWORD = "OVDE_UNESI_LOZINKU";
@@ -179,7 +179,7 @@ String urlEncode(const String& value) {
 
 bool postHttps(const String& url, const String& body, const char* contentType, String& response, int& statusCode) {
   WiFiClientSecure client;
-  // Pojednostavljenje za prototip. Za javnu/produkcijsku instalaciju dodaj CA sertifikat.
+
   client.setInsecure();
 
   HTTPClient http;
@@ -279,7 +279,7 @@ void publishParkingToFirebase() {
   doc["since"] = state == ST_OCCUPIED ? parkStartEpoch : 0;
   doc["cost"] = totalCost;
   doc["price"] = PRICE_PER_INTERVAL;
-  // Firebase server timestamp (ms), nezavisi od ESP32 sata za heartbeat.
+
   JsonObject seen = doc.createNestedObject("seen");
   seen[".sv"] = "timestamp";
 
@@ -299,7 +299,7 @@ void publishParkingToFirebase() {
   String url = databaseUrl + "/parking.json?auth=" + urlEncode(firebaseIdToken);
 
   WiFiClientSecure client;
-  // Pojednostavljenje za prototip. Za javnu/produkcijsku instalaciju dodaj CA sertifikat.
+
   client.setInsecure();
   HTTPClient http;
   http.setConnectTimeout(1800);
@@ -326,8 +326,7 @@ void publishParkingToFirebase() {
 }
 
 void serviceFirebase() {
-  // Ne pokreći HTTPS zahtev dok se servo fizički pomera.
-  // To smanjuje mogućnost da mrežni zahtev uspori kretanje rampe.
+
   if (servoAngle != servoTarget) return;
   unsigned long now = millis();
   if (!firebaseDirty && now - lastFirebaseHeartbeat < FIREBASE_HEARTBEAT_MS) return;
