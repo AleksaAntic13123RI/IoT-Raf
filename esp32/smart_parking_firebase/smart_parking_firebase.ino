@@ -1,25 +1,3 @@
-/*
-  SMART PARKING + FIREBASE REALTIME DATABASE
-  Board: WEMOS LOLIN32 / ESP32
-
-  Libraries to install in Arduino IDE:
-    - ESP32Servo (Kevin Harrington / John K. Bennett)
-    - ArduinoJson (Benoit Blanchon)
-
-  ESP32 Arduino core already provides WiFi, HTTPClient and WiFiClientSecure.
-
-  Firebase data written to /parking:
-    state, gate, since, cost, price, last { sec, cost }, seen
-
-  IMPORTANT:
-    - Create an Email/Password Firebase Auth user with email:
-        parking-device@example.com
-    - Put that user's password below.
-    - Set the same email in database.rules.json if you change it here.
-    - For a prototype this sketch uses client.setInsecure() for HTTPS.
-      That skips certificate verification. Use a CA certificate for a public/production installation.
-*/
-
 #include <ESP32Servo.h>
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
